@@ -1,6 +1,6 @@
 #!/bin/sh
 echo
-echo "Initialising Webtop ..."
+echo "[i] Initialising Webtop ..."
 echo
 export PUID=1000
 export PGID=1000
@@ -8,6 +8,7 @@ export TZ=Etc/UTC
 export TITLE="$(yq e .title /root/data/start9/config.yaml)"
 export CUSTOM_USER="$(yq e .username /root/data/start9/config.yaml)"
 export PASSWORD="$(yq e .password /root/data/start9/config.yaml)"
+chown -R $PUID:$PGID /config
 
 cat << EOF > /root/data/start9/stats.yaml
 version: 2

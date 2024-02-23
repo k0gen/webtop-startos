@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-kasmvnc:alpine318
+FROM ghcr.io/linuxserver/baseimage-kasmvnc:alpine319
 
 ARG BUILD_DATE
 ARG VERSION
@@ -34,7 +34,7 @@ COPY /root /
 RUN mkdir -p /root/data
 VOLUME /config
 
-RUN echo -e "\nStarting Webtop for StartOS ..." > /etc/s6-overlay/s6-rc.d/init-adduser/branding; sed -i '/run_branding() {/,/}/d' /docker-mods
+RUN echo -e "\n[i] Starting Webtop for StartOS ..." > /etc/s6-overlay/s6-rc.d/init-adduser/branding; sed -i '/run_branding() {/,/}/d' /docker-mods
 COPY --chmod=a+x ./docker_entrypoint.sh /usr/local/bin/docker_entrypoint.sh
 COPY --chmod=664 icon.png /kclient/public/icon.png
 COPY --chmod=664 icon.png /kclient/public/favicon.ico
